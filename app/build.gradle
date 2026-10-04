@@ -1,0 +1,87 @@
+// Um projeto, três apps: cada "flavor" vira um APK que abre um dos sites em tela cheia
+// (Trusted Web Activity). O conteúdo continua vindo do GitHub Pages, então as atualizações
+// dos sites chegam sozinhas, sem precisar de APK novo.
+plugins {
+    id 'com.android.application'
+}
+
+def keystoreFile = System.getenv('KEYSTORE_FILE')
+def site = 'https://josuenino33.github.io'
+// declaração que liga o app ao site (as aspas precisam do \ dentro de um recurso <string>)
+def assetStatements = '[{\\"relation\\": [\\"delegate_permission/common.handle_all_urls\\"], \\"target\\": {\\"namespace\\": \\"web\\", \\"site\\": \\"' + site + '\\"}}]'
+
+android {
+    namespace 'io.github.josuenino33.apps'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 35
+        versionCode((System.getenv('VERSION_CODE') ?: '1') as int)
+        versionName(System.getenv('VERSION_NAME') ?: '1.0.0')
+        manifestPlaceholders = [host: 'josuenino33.github.io']
+        resValue 'string', 'asset_statements', assetStatements
+    }
+
+    flavorDimensions 'app'
+    productFlavors {
+        bateria {
+            dimension 'app'
+            applicationId 'io.github.josuenino33.bateria'
+            manifestPlaceholders = [path: '/bateria-do-zero-ao-pro/']
+            resValue 'string', 'app_name', 'Bateria'
+            resValue 'string', 'launch_url', "${site}/bateria-do-zero-ao-pro/"
+            resValue 'color', 'statusBar', '#14171C'
+            resValue 'color', 'navigationBar', '#101216'
+            resValue 'color', 'splashBackground', '#101216'
+        }
+        guitarra {
+            dimension 'app'
+            applicationId 'io.github.josuenino33.guitarra'
+            manifestPlaceholders = [path: '/guitarra-do-zero-ao-pro/']
+            resValue 'string', 'app_name', 'Guitarra'
+            resValue 'string', 'launch_url', "${site}/guitarra-do-zero-ao-pro/#hoje"
+            resValue 'color', 'statusBar', '#0F1412'
+            resValue 'color', 'navigationBar', '#0F1412'
+            resValue 'color', 'splashBackground', '#0F1412'
+        }
+        treino {
+            dimension 'app'
+            applicationId 'io.github.josuenino33.treino'
+            manifestPlaceholders = [path: '/treino-em-casa-do-zero/']
+            resValue 'string', 'app_name', 'Treino'
+            resValue 'string', 'launch_url', "${site}/treino-em-casa-do-zero/#/hoje"
+            resValue 'color', 'statusBar', '#256ABF'
+            resValue 'color', 'navigationBar', '#F9F9F7'
+            resValue 'color', 'splashBackground', '#F9F9F7'
+        }
+    }
+
+    signingConfigs {
+        release {
+            if (keystoreFile) {
+                storeFile file(keystoreFile)
+                storeType 'pkcs12'
+                storePassword System.getenv('KEYSTORE_PASSWORD')
+                keyAlias System.getenv('KEY_ALIAS') ?: 'apps'
+                keyPassword System.getenv('KEYSTORE_PASSWORD')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (keystoreFile) signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
+}
