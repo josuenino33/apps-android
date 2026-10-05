@@ -1,4 +1,4 @@
-// Um projeto, três apps: cada "flavor" vira um APK que abre um dos sites em tela cheia
+// Um projeto, quatro apps: cada "flavor" vira um APK que abre um dos sites em tela cheia
 // (Trusted Web Activity). O conteúdo continua vindo do GitHub Pages, então as atualizações
 // dos sites chegam sozinhas, sem precisar de APK novo.
 plugins {
@@ -54,6 +54,16 @@ android {
             resValue 'color', 'statusBar', '#256ABF'
             resValue 'color', 'navigationBar', '#F9F9F7'
             resValue 'color', 'splashBackground', '#F9F9F7'
+        }
+        canto {
+            dimension 'app'
+            applicationId 'io.github.josuenino33.canto'
+            manifestPlaceholders = [path: '/canto-do-zero-ao-pro/']
+            resValue 'string', 'app_name', 'Canto'
+            resValue 'string', 'launch_url', "${site}/canto-do-zero-ao-pro/"
+            resValue 'color', 'statusBar', '#121518'
+            resValue 'color', 'navigationBar', '#0F1214'
+            resValue 'color', 'splashBackground', '#0F1214'
         }
     }
 
