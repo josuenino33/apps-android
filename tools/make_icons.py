@@ -9,6 +9,7 @@ APPS = {
     'guitarra': 'https://josuenino33.github.io/guitarra-do-zero-ao-pro/',
     'treino': 'https://josuenino33.github.io/treino-em-casa-do-zero/',
     'canto': 'https://josuenino33.github.io/canto-do-zero-ao-pro/',
+    'teclado': 'https://josuenino33.github.io/teclado-do-zero-ao-pro/',
 }
 LEGACY = {'mdpi': 48, 'hdpi': 72, 'xhdpi': 96, 'xxhdpi': 144, 'xxxhdpi': 192}
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'app', 'src')

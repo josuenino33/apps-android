@@ -1,4 +1,4 @@
-# Monta os 4 APKs assinados e publica numa versão (Release) para download.
+# Monta os 5 APKs assinados e publica numa versão (Release) para download.
 # Para gerar uma versão nova: aba Actions > "Gerar APKs" > Run workflow, e informe o número.
 name: Gerar APKs
 
@@ -46,7 +46,7 @@ jobs:
         run: |
           mkdir -p saida
           APKSIGNER=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
-          for app in bateria guitarra treino canto; do
+          for app in bateria guitarra treino canto teclado; do
             apk="app/build/outputs/apk/$app/release/app-$app-release.apk"
             "$APKSIGNER" verify --print-certs "$apk" | grep -i "SHA-256"
             case $app in
@@ -54,6 +54,7 @@ jobs:
               guitarra) nome=guitarra-do-zero-ao-pro ;;
               treino)   nome=treino-em-casa-do-zero ;;
               canto)    nome=canto-do-zero-ao-pro ;;
+              teclado)  nome=teclado-do-zero-ao-pro ;;
             esac
             cp "$apk" "saida/$nome.apk"
           done
@@ -77,6 +78,7 @@ jobs:
           | 🎸 Guitarra do zero ao pro | `guitarra-do-zero-ao-pro.apk` |
           | 💪 Treino em casa do zero | `treino-em-casa-do-zero.apk` |
           | 🎤 Canto do zero ao pro | `canto-do-zero-ao-pro.apk` |
+          | 🎹 Teclado do zero ao pro | `teclado-do-zero-ao-pro.apk` |
 
           Os apps abrem em tela cheia e se atualizam sozinhos quando o site muda.
           EOF

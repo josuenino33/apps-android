@@ -1,4 +1,4 @@
-// Um projeto, quatro apps: cada "flavor" vira um APK que abre um dos sites em tela cheia
+// Um projeto, cinco apps: cada "flavor" vira um APK que abre um dos sites em tela cheia
 // (Trusted Web Activity). O conteúdo continua vindo do GitHub Pages, então as atualizações
 // dos sites chegam sozinhas, sem precisar de APK novo.
 plugins {
@@ -64,6 +64,16 @@ android {
             resValue 'color', 'statusBar', '#121518'
             resValue 'color', 'navigationBar', '#0F1214'
             resValue 'color', 'splashBackground', '#0F1214'
+        }
+        teclado {
+            dimension 'app'
+            applicationId 'io.github.josuenino33.teclado'
+            manifestPlaceholders = [path: '/teclado-do-zero-ao-pro/']
+            resValue 'string', 'app_name', 'Teclado'
+            resValue 'string', 'launch_url', "${site}/teclado-do-zero-ao-pro/"
+            resValue 'color', 'statusBar', '#16131D'
+            resValue 'color', 'navigationBar', '#111016'
+            resValue 'color', 'splashBackground', '#111016'
         }
     }
 
