@@ -75,6 +75,16 @@ android {
             resValue 'color', 'navigationBar', '#111016'
             resValue 'color', 'splashBackground', '#111016'
         }
+        ingles {
+            dimension 'app'
+            applicationId 'io.github.josuenino33.ingles'
+            manifestPlaceholders = [path: '/ingles-do-zero-ao-pro/']
+            resValue 'string', 'app_name', 'Inglês'
+            resValue 'string', 'launch_url', "${site}/ingles-do-zero-ao-pro/"
+            resValue 'color', 'statusBar', '#1C1514'
+            resValue 'color', 'navigationBar', '#141110'
+            resValue 'color', 'splashBackground', '#141110'
+        }
     }
 
     signingConfigs {

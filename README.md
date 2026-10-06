@@ -9,6 +9,7 @@ Instaladores Android (APK) dos meus apps. Baixe, instale e use como qualquer out
 | 💪 **Treino** | Treino em casa do zero: 7 trilhas e 55 níveis com o peso do corpo | [treino-em-casa-do-zero.apk](https://github.com/josuenino33/apps-android/releases/latest/download/treino-em-casa-do-zero.apk) |
 | 🎤 **Canto** | Canto do zero ao pro: 311 exercícios, piano que guia no seu tom e professor que ouve a sua afinação | [canto-do-zero-ao-pro.apk](https://github.com/josuenino33/apps-android/releases/latest/download/canto-do-zero-ao-pro.apk) |
 | 🎹 **Teclado** | Teclado do zero ao pro: notas caindo, partitura, acordes, levadas, ritmos e professor que ouve pelo teclado MIDI | [teclado-do-zero-ao-pro.apk](https://github.com/josuenino33/apps-android/releases/latest/download/teclado-do-zero-ao-pro.apk) |
+| 🗣️ **Inglês** | Inglês do zero ao pro: 116 lições com áudio, revisão espaçada, histórias graduadas, pronúncia com reconhecimento de voz e conversa com IA | [ingles-do-zero-ao-pro.apk](https://github.com/josuenino33/apps-android/releases/latest/download/ingles-do-zero-ao-pro.apk) |
 
 Todas as versões ficam em [Releases](https://github.com/josuenino33/apps-android/releases).
 
@@ -36,7 +37,7 @@ Só é preciso quando mudar algo do próprio app Android (nome, ícone, cores ou
 
 1. Aba **Actions** → **Gerar APKs** → **Run workflow**.
 2. Informe o número da versão (por exemplo `1.0.1`) e confirme.
-3. Em uns 5 minutos a versão aparece em **Releases**, com os cinco APKs.
+3. Em uns 5 minutos a versão aparece em **Releases**, com os seis APKs.
 
 Os ícones são gerados a partir dos ícones dos sites com `python tools/make_icons.py` (precisa de Pillow).
 
@@ -47,7 +48,7 @@ Os APKs são assinados com uma chave guardada fora do repositório, nos segredos
 ## Estrutura
 
 ```
-app/build.gradle             os cinco apps (flavors): nome, endereço, cores e id de cada um
+app/build.gradle             os seis apps (flavors): nome, endereço, cores e id de cada um
 app/src/main/AndroidManifest.xml   configuração da Trusted Web Activity
 app/src/<app>/res/           ícones e tela de abertura de cada app
 .github/workflows/apk.yml    monta, assina e publica os APKs

@@ -46,7 +46,7 @@ jobs:
         run: |
           mkdir -p saida
           APKSIGNER=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
-          for app in bateria guitarra treino canto teclado; do
+          for app in bateria guitarra treino canto teclado ingles; do
             apk="app/build/outputs/apk/$app/release/app-$app-release.apk"
             "$APKSIGNER" verify --print-certs "$apk" | grep -i "SHA-256"
             case $app in
@@ -55,6 +55,7 @@ jobs:
               treino)   nome=treino-em-casa-do-zero ;;
               canto)    nome=canto-do-zero-ao-pro ;;
               teclado)  nome=teclado-do-zero-ao-pro ;;
+              ingles)   nome=ingles-do-zero-ao-pro ;;
             esac
             cp "$apk" "saida/$nome.apk"
           done
@@ -79,6 +80,7 @@ jobs:
           | 💪 Treino em casa do zero | `treino-em-casa-do-zero.apk` |
           | 🎤 Canto do zero ao pro | `canto-do-zero-ao-pro.apk` |
           | 🎹 Teclado do zero ao pro | `teclado-do-zero-ao-pro.apk` |
+          | 🗣️ Inglês do zero ao pro | `ingles-do-zero-ao-pro.apk` |
 
           Os apps abrem em tela cheia e se atualizam sozinhos quando o site muda.
           EOF
